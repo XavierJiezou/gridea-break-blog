@@ -1,109 +1,112 @@
+
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+<meta charset="utf-8" >
+
 <title>【Python】为什么多线程并行不快反慢？ | XavierJiezou</title>
-<link rel="shortcut icon" href="https://xavierjiezou.github.io/favicon.ico?v=1641317924543">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://xavierjiezou.github.io/favicon.ico?v=1641318053039">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://xavierjiezou.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="【Python】为什么多线程并行不快反慢？ | XavierJiezou - Atom Feed" href="https://xavierjiezou.github.io/atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="项目场景
-这里有个证件照换底的需求：将图像的透明底色换为红色背景。其逻辑是用一个嵌套的 for 循环分别遍历图像的行和列，判断每一个位置的像素点是否是透明的，如果是，换成红色背景；如果不是，则不做任何修改。但目前的问题是速度有点慢，需要做并..." />
-    <meta name="keywords" content="python,多线程" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://xavierjiezou.github.io">
-  <img class="avatar" src="https://xavierjiezou.github.io/images/avatar.png?v=1641317924543" alt="">
-  </a>
-  <h1 class="site-title">
-    XavierJiezou
-  </h1>
-  <p class="site-description">
-    温故而知新
-  </p>
-  <div class="menu-container">
-    
-      
-        <a href="/" class="menu">
-          首页
-        </a>
-      
-    
-      
-        <a href="/archives" class="menu">
-          归档
-        </a>
-      
-    
-      
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/post/about" class="menu">
-          关于
-        </a>
-      
-    
-  </div>
-  <div class="social-container">
-    
-      
-        <a href="https://github.com/XavierJiezou/" target="_blank">
-          <i class="ri-github-line"></i>
-        </a>
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://xavierjiezou.github.io">
+        <img class="avatar" src="https://xavierjiezou.github.io/images/avatar.png?v=1641318053039" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://xavierjiezou.github.io">
+        <h1 class="site-title">XavierJiezou</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
   </div>
 </div>
 
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
         <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              【Python】为什么多线程并行不快反慢？
-            </h2>
-            <div class="post-info">
-              <span>
-                2022-01-05
-              </span>
-              <span>
-                3 min read
-              </span>
-              
-                <a href="https://xavierjiezou.github.io/tag/2u-SDzgjO/" class="post-tag">
-                  # python
-                </a>
-              
-                <a href="https://xavierjiezou.github.io/tag/6BJ_senDvh/" class="post-tag">
-                  # 多线程
-                </a>
-              
+          
+            <div class="feature-container" style="background-image: url('https://img-blog.csdnimg.cn/bdaf7a8578dd443b90e973dcd72a6573.png?x-oss-process=imag,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGF2aWVyIEppZXpvdQ==,size_20,color_FFFFFF,t_70,g_se,x_16')">
             </div>
+          
+          <h2 class="post-title">【Python】为什么多线程并行不快反慢？</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2022-01-05</span>
             
-              <img class="post-feature-image" src="https://img-blog.csdnimg.cn/bdaf7a8578dd443b90e973dcd72a6573.png?x-oss-process=imag,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGF2aWVyIEppZXpvdQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="">
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://xavierjiezou.github.io/tag/2u-SDzgjO/">
+                    python
+                    
+                      ，
+                    
+                  </a>
+                
+                  <a href="https://xavierjiezou.github.io/tag/6BJ_senDvh/">
+                    多线程
+                    
+                  </a>
+                
+              </span>
             
-            <div class="post-content-wrapper">
-              <div class="post-content">
-                <h1 id="项目场景">项目场景</h1>
+          </div>
+          <div class="post-content">
+            <h1 id="项目场景">项目场景</h1>
 <p>这里有个证件照换底的需求：将图像的透明底色换为红色背景。其逻辑是用一个嵌套的 for 循环分别遍历图像的行和列，判断每一个位置的像素点是否是透明的，如果是，换成红色背景；如果不是，则不做任何修改。但目前的问题是速度有点慢，需要做并行加速。我们用 Python 自带的多线程池进行优化，优化程序的代码如下：</p>
 <pre><code class="language-python">&quot;&quot;&quot;安装依赖模块
 pip install numpy opencv-python tqdm
@@ -188,87 +191,57 @@ if __name__ == '__main__':
 <!-- more -->
 <!-- more -->
 
-              </div>
-              <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li><a href="#%E9%A1%B9%E7%9B%AE%E5%9C%BA%E6%99%AF">项目场景</a></li>
-<li><a href="#%E6%B5%8B%E8%AF%95%E6%A0%B7%E4%BE%8B">测试样例</a>
-<ul>
-<li><a href="#%E6%A0%B7%E4%BE%8B%E8%BE%93%E5%85%A5">样例输入</a></li>
-<li><a href="#%E6%A0%B7%E4%BE%8B%E8%BE%93%E5%87%BA">样例输出</a></li>
-</ul>
-</li>
-<li><a href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0">问题描述</a></li>
-<li><a href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88">解决方案</a></li>
-</ul>
-
-              </div>
-            </div>
-          </article>
+          </div>
         </div>
 
         
           <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://xavierjiezou.github.io/post/hello-gridea/">
+            <a class="purple-link" href="https://xavierjiezou.github.io/post/hello-gridea/">
               <h3 class="post-title">
-                Hello Gridea
+                下一篇：Hello Gridea
               </h3>
             </a>
           </div>
-        
+          
+      </div>
 
-        
+      
 
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-  <a class="rss" href="https://xavierjiezou.github.io/atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
+      <div class="site-footer">
+  <div class="slogan">温故而知新</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://xavierjiezou.github.io/atom.xml" target="_blank">RSS</a>
 </div>
 
-      </div>
+
     </div>
+    <script type="application/javascript">
 
-    <script>
-      hljs.initHighlightingOnLoad()
+hljs.initHighlightingOnLoad()
 
-      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
 
-      // This should probably be throttled.
-      // Especially because it triggers during smooth scrolling.
-      // https://lodash.com/docs/4.17.10#throttle
-      // You could do like...
-      // window.addEventListener("scroll", () => {
-      //    _.throttle(doThatStuff, 100);
-      // });
-      // Only not doing it here to keep this Pen dependency-free.
+</script>
 
-      window.addEventListener("scroll", event => {
-        let fromTop = window.scrollY;
 
-        mainNavLinks.forEach((link, index) => {
-          let section = document.getElementById(decodeURI(link.hash).substring(1));
-          let nextSection = null
-          if (mainNavLinks[index + 1]) {
-            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-          }
-          if (section.offsetTop <= fromTop) {
-            if (nextSection) {
-              if (nextSection.offsetTop > fromTop) {
-                link.classList.add("current");
-              } else {
-                link.classList.remove("current");    
-              }
-            } else {
-              link.classList.add("current");
-            }
-          } else {
-            link.classList.remove("current");
-          }
-        });
-      });
 
-    </script>
+
   </body>
 </html>
