@@ -1,98 +1,136 @@
-
-<!DOCTYPE html>
 <html>
-  <head>
-    
-<meta charset="utf-8" >
 
-<title>python | XavierJiezou</title>
-<meta name="description" content="温故而知新">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://xavierjiezou.github.io/favicon.ico?v=1641318097300">
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    python | XavierJiezou
+</title>
+<link rel="shortcut icon" href="https://xavierjiezou.github.io/favicon.ico?v=1641319247715">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://xavierjiezou.github.io/styles/main.css">
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://xavierjiezou.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
+</head>
 
-  </head>
-  <body>
-    <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="https://xavierjiezou.github.io">
-        <img class="avatar" src="https://xavierjiezou.github.io/images/avatar.png?v=1641318097300" alt="" width="32px" height="32px">
-      </a>
-      <a href="https://xavierjiezou.github.io">
-        <h1 class="site-title">XavierJiezou</h1>
-      </a>
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://xavierjiezou.github.io">
+                <img class="avatar" src="https://xavierjiezou.github.io/images/avatar.png?v=1641319247715" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    XavierJiezou
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
 </div>
 
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
-      
-        
-          <a href="/" class="menu purple-link">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="menu purple-link">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="menu purple-link">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="menu purple-link">
-            关于
-          </a>
-        
-      
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-container main-container">
+                <div id="content" class="main-container-left">
+                    
+    <div class="i-card">
+        <b>标签：#
+        python</b>
     </div>
-  </div>
-</transition>
-
-
-      <div class="content-container">
-
-        <div class="current-tag-container">
-          <h2 class="title">
-            <i class="icon icon-pricetags-outline"></i> python
-          </h2> 
-        </div>
-
+    
         
-<section class="post-item">
-    <div class="content">
-      <a href="https://xavierjiezou.github.io/post/python-wei-shi-me-duo-xian-cheng-bing-xing-bu-kuai-fan-man/">
-        <h2 class="post-title">【Python】为什么多线程并行不快反慢？</h2>
-      </a>
-      <div class="post-abstract">
-        <h1 id="项目场景">项目场景</h1>
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://xavierjiezou.github.io/post/python-wei-shi-me-duo-xian-cheng-bing-xing-bu-kuai-fan-man/">
+                        【Python】为什么多线程并行不快反慢？
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2022-01-05</time>
+                    
+                        <a href="https://xavierjiezou.github.io/tag/2u-SDzgjO/" class="post-tag i-tag
+                            i-tag-warning">
+            #python
+        </a>
+                        
+                        <a href="https://xavierjiezou.github.io/tag/6BJ_senDvh/" class="post-tag i-tag
+                            i-tag-other_1">
+            #多线程
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                        <a href="https://xavierjiezou.github.io/post/python-wei-shi-me-duo-xian-cheng-bing-xing-bu-kuai-fan-man/" class="post-feature-image" style="background-image:url(https://img-blog.csdnimg.cn/bdaf7a8578dd443b90e973dcd72a6573.png?x-oss-process=imag,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGF2aWVyIEppZXpvdQ==,size_20,color_FFFFFF,t_70,g_se,x_16) ">
+                        </a>
+                        
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <h1 id="项目场景">项目场景</h1>
 <p>这里有个证件照换底的需求：将图像的透明底色换为红色背景。其逻辑是用一个嵌套的 for 循环分别遍历图像的行和列，判断每一个位置的像素点是否是透明的，如果是，换成红色背景；如果不是，则不做任何修改。但目前的问题是速度有点慢，需要做并行加速。我们用 Python 自带的多线程池进行优化，优化程序的代码如下：</p>
 <pre><code class="language-python">&quot;&quot;&quot;安装依赖模块
 pip install numpy opencv-python tqdm
@@ -175,81 +213,71 @@ if __name__ == '__main__':
 <p>会不会是 Python 全局解释锁（GIL）的问题？</p>
 <p><mark>（待解决……）</mark></p>
 
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2022-01-05</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://xavierjiezou.github.io/post/python-wei-shi-me-duo-xian-cheng-bing-xing-bu-kuai-fan-man/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
             
-              <a href="https://xavierjiezou.github.io/tag/2u-SDzgjO/">
-                python
+                <!-- 翻页 -->
                 
-                  ，
-                
-              </a>
-            
-              <a href="https://xavierjiezou.github.io/tag/6BJ_senDvh/">
-                多线程
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-      <a href="https://xavierjiezou.github.io/post/python-wei-shi-me-duo-xian-cheng-bing-xing-bu-kuai-fan-man/">
-        <div class="feature-container" style="background-image: url('https://img-blog.csdnimg.cn/bdaf7a8578dd443b90e973dcd72a6573.png?x-oss-process=imag,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGF2aWVyIEppZXpvdQ==,size_20,color_FFFFFF,t_70,g_se,x_16')">
+                </div>
+                <!--  -->
+                <div class="main-container-middle"></div>
+                <!--  -->
+                <div id="sidebar" class="main-container-right">
+
+                    <!-- 个人信息 -->
+                    
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://xavierjiezou.github.io/images/avatar.png?v=1641319247715)">
         </div>
-      </a>
-    
-  </section>
+        <h1 class="id_card-title">
+            XavierJiezou
+        </h1>
+        <h2 class="id_card-description">
+            温故而知新
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
 
-
-<div class="pagination-container">
-  
-  
-</div>
-
-
-      </div>
-
-      <div class="site-footer">
-  <div class="slogan">温故而知新</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://xavierjiezou.github.io/atom.xml" target="_blank">RSS</a>
-</div>
-
-
+        </div>
     </div>
-    <script type="application/javascript">
+    
 
-hljs.initHighlightingOnLoad()
+                        <!-- 公告栏 -->
+                        
 
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
+                </div>
+            </div>
 
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://xavierjiezou.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
 </script>
 
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+</body>
 
-
-
-  </body>
 </html>
