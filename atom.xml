@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xavierjiezou.github.io</id>
-    <title>Gridea</title>
-    <updated>2022-01-04T17:13:25.290Z</updated>
+    <title>XavierJiezou</title>
+    <updated>2022-01-04T17:30:51.343Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xavierjiezou.github.io"/>
     <link rel="self" href="https://xavierjiezou.github.io/atom.xml"/>
     <subtitle>温故而知新</subtitle>
     <logo>https://xavierjiezou.github.io/images/avatar.png</logo>
     <icon>https://xavierjiezou.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2022, Gridea</rights>
+    <rights>All rights reserved 2022, XavierJiezou</rights>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
         <id>https://xavierjiezou.github.io/post/hello-gridea/</id>
