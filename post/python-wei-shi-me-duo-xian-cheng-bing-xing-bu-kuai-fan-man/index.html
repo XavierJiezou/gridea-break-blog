@@ -2,16 +2,20 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>XavierJiezou</title>
+<title>【Python】为什么多线程并行不快反慢？ | XavierJiezou</title>
 <link rel="shortcut icon" href="https://xavierjiezou.github.io/favicon.ico?v=1641317789820">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://xavierjiezou.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="XavierJiezou - Atom Feed" href="https://xavierjiezou.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="【Python】为什么多线程并行不快反慢？ | XavierJiezou - Atom Feed" href="https://xavierjiezou.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="温故而知新" />
+    <meta name="description" content="项目场景
+这里有个证件照换底的需求：将图像的透明底色换为红色背景。其逻辑是用一个嵌套的 for 循环分别遍历图像的行和列，判断每一个位置的像素点是否是透明的，如果是，换成红色背景；如果不是，则不做任何修改。但目前的问题是速度有点慢，需要做并..." />
+    <meta name="keywords" content="python,多线程" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
   <body>
     <div class="main">
@@ -72,36 +76,34 @@
   </div>
 </div>
 
-    
-        <div class="post-container">
-  
-    <article class="post">
-      <a href="https://xavierjiezou.github.io/post/python-wei-shi-me-duo-xian-cheng-bing-xing-bu-kuai-fan-man/">
-        <h2 class="post-title">【Python】为什么多线程并行不快反慢？</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2022-01-05
-        </span>
-        <span>
-          3 min read
-        </span>
-        
-          <a href="https://xavierjiezou.github.io/tag/2u-SDzgjO/" class="post-tag">
-            # python
-          </a>
-        
-          <a href="https://xavierjiezou.github.io/tag/6BJ_senDvh/" class="post-tag">
-            # 多线程
-          </a>
-        
-      </div>
-      
-        <a href="https://xavierjiezou.github.io/post/python-wei-shi-me-duo-xian-cheng-bing-xing-bu-kuai-fan-man/" class="post-feature-image" style="background-image: url('https://img-blog.csdnimg.cn/bdaf7a8578dd443b90e973dcd72a6573.png?x-oss-process=imag,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGF2aWVyIEppZXpvdQ==,size_20,color_FFFFFF,t_70,g_se,x_16')">
-        </a>
-      
-      <div class="post-abstract">
-        <h1 id="项目场景">项目场景</h1>
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              【Python】为什么多线程并行不快反慢？
+            </h2>
+            <div class="post-info">
+              <span>
+                2022-01-05
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://xavierjiezou.github.io/tag/2u-SDzgjO/" class="post-tag">
+                  # python
+                </a>
+              
+                <a href="https://xavierjiezou.github.io/tag/6BJ_senDvh/" class="post-tag">
+                  # 多线程
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://img-blog.csdnimg.cn/bdaf7a8578dd443b90e973dcd72a6573.png?x-oss-process=imag,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGF2aWVyIEppZXpvdQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="项目场景">项目场景</h1>
 <p>这里有个证件照换底的需求：将图像的透明底色换为红色背景。其逻辑是用一个嵌套的 for 循环分别遍历图像的行和列，判断每一个位置的像素点是否是透明的，如果是，换成红色背景；如果不是，则不做任何修改。但目前的问题是速度有点慢，需要做并行加速。我们用 Python 自带的多线程池进行优化，优化程序的代码如下：</p>
 <pre><code class="language-python">&quot;&quot;&quot;安装依赖模块
 pip install numpy opencv-python tqdm
@@ -183,47 +185,41 @@ if __name__ == '__main__':
 <h1 id="解决方案">解决方案</h1>
 <p>会不会是 Python 全局解释锁（GIL）的问题？</p>
 <p><mark>（待解决……）</mark></p>
+<!-- more -->
+<!-- more -->
 
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://xavierjiezou.github.io/post/hello-gridea/">
-        <h2 class="post-title">Hello Gridea</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2018-12-12
-        </span>
-        <span>
-          2 min read
-        </span>
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E9%A1%B9%E7%9B%AE%E5%9C%BA%E6%99%AF">项目场景</a></li>
+<li><a href="#%E6%B5%8B%E8%AF%95%E6%A0%B7%E4%BE%8B">测试样例</a>
+<ul>
+<li><a href="#%E6%A0%B7%E4%BE%8B%E8%BE%93%E5%85%A5">样例输入</a></li>
+<li><a href="#%E6%A0%B7%E4%BE%8B%E8%BE%93%E5%87%BA">样例输出</a></li>
+</ul>
+</li>
+<li><a href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0">问题描述</a></li>
+<li><a href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88">解决方案</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
         
-          <a href="https://xavierjiezou.github.io/tag/2QJsGIJaG/" class="post-tag">
-            # Gridea
-          </a>
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://xavierjiezou.github.io/post/hello-gridea/">
+              <h3 class="post-title">
+                Hello Gridea
+              </h3>
+            </a>
+          </div>
         
-      </div>
-      
-        <a href="https://xavierjiezou.github.io/post/hello-gridea/" class="post-feature-image" style="background-image: url('https://xavierjiezou.github.io/post-images/hello-gridea.png')">
-        </a>
-      
-      <div class="post-abstract">
-        <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
 
-      </div>
-    </article>
-  
-</div>
+        
 
-    
-        <div class="pagination-container">
-  
-  
-</div>
-
-    
         <div class="site-footer">
   Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
   <a class="rss" href="https://xavierjiezou.github.io/atom.xml" target="_blank">
@@ -233,5 +229,46 @@ if __name__ == '__main__':
 
       </div>
     </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
   </body>
 </html>
