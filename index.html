@@ -1,316 +1,72 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" >
-
-<title>XavierJiezou</title>
-<meta name="description" content="温故而知新">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://xavierjiezou.github.io/favicon.ico?v=1641320726243">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-<link rel="stylesheet" href="https://xavierjiezou.github.io/styles/main.css">
-
-
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://xavierjiezou.github.io/media/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/live2d.css">
+    <link rel="stylesheet" href="https://xavierjiezou.github.io/styles/main.css">
+    <script src="https://xavierjiezou.github.io/media/js/valine.min.js"></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    <meta name="description" content="温故而知新" />
+    <meta http-equiv="x-pjax-version" content="v123">
+    <title>XavierJiezou</title>
+</head>
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
-
-  </head>
-  <body>
-    <nav class="navbar border fixed split-nav">
-  <div class="nav-brand">
-    <h3><a href="https://xavierjiezou.github.io">XavierJiezou</a></h3>
-  </div>
-  <div class="collapsible">
-    <input id="collapsible1" type="checkbox" name="collapsible1">
-    <button>
-      <label for="collapsible1">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-      </label>
-    </button>
-    <div class="collapsible-body">
-      <ul class="inline">
-        
-          <li>
+<body>
+    <div id="content">
+        <div class="nav-large">
+            <div class="row">
+                <!-- ----------------左侧菜单栏html 👇-------------------------------------->
+                
+                <!-- ----------------左侧菜单栏html 👆-------------------------------------->
+                <!------------------ 顶部菜单栏html👇--------->
+                 
+                <!------------------ 顶部菜单栏html👆--------->
+                </div>
+            </div>
+            <div id="bg">
+            </div>
+            <!------- 背景图加载方式👇----- -->
+            <div id="bgchoice" style="display: none">
+            </div>
             
-              <a href="/" class="menu">
-                首页
-              </a>
+            <div id="bgurl" style="display:none"></div>
             
-          </li>
-        
-          <li>
-            
-              <a href="/archives" class="menu">
-                归档
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/tags" class="menu">
-                标签
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/post/about" class="menu">
-                关于
-              </a>
-            
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-
-    <div id="top" class="row site">
-      <div class="sm-12 md-8 col">
-        <div class="paper">
-          
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://xavierjiezou.github.io/post/python-wei-shi-me-duo-xian-cheng-bing-xing-bu-kuai-fan-man/">【Python】为什么多线程并行不快反慢？</a>
-    </h2>
-    <p class="article-meta">
-      2022-01-05
-      
-        <a href="https://xavierjiezou.github.io/tag/2u-SDzgjO/" class="badge ">
-          python
-        </a>
-      
-        <a href="https://xavierjiezou.github.io/tag/6BJ_senDvh/" class="badge secondary">
-          多线程
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <h1 id="项目场景">项目场景</h1>
-<p>这里有个证件照换底的需求：将图像的透明底色换为红色背景。其逻辑是用一个嵌套的 for 循环分别遍历图像的行和列，判断每一个位置的像素点是否是透明的，如果是，换成红色背景；如果不是，则不做任何修改。但目前的问题是速度有点慢，需要做并行加速。我们用 Python 自带的多线程池进行优化，优化程序的代码如下：</p>
-<pre><code class="language-python">&quot;&quot;&quot;安装依赖模块
-pip install numpy opencv-python tqdm
-&quot;&quot;&quot;
-import time
-import numpy as np
-from cv2 import cv2
-from tqdm import tqdm
-import concurrent.futures as cf
-
-
-class ChangeBackgroundColor():
-    &quot;&quot;&quot;修改图片背景的类（默认将透明背景修改为红色背景）
-
-    Args:
-        root (str): 输入图片的路径
-    &quot;&quot;&quot;
-    def __init__(self, root: str):
-        &quot;&quot;&quot;类的初始化函数
-
-        Args:
-            root (str): 输入图片的路径
-        &quot;&quot;&quot;
-        self.image_original = cv2.imread(root, cv2.IMREAD_UNCHANGED)
-        self.rows, self.cols, _ = self.image_original.shape
-        self.serial()
-        self.parallel()
-
-    def serial(self):
-        &quot;&quot;&quot;串行程序
-        &quot;&quot;&quot;
-        t1 = time.time()
-        for i in tqdm(range(self.rows), desc='Serial-Time'):
-            for j in range(self.cols):
-                if (self.image_original[i][j] == np.zeros(4)).all():
-                    self.image_original[i][j] = np.array([0, 0, 255, 255])
-                else:
-                    pass
-        t2 = time.time()
-        cv2.imwrite('./red.png', self.image_original)
-
-    def __temp__(self, i, pbar):
-        &quot;&quot;&quot;并行程序依赖的临时函数
-
-        Args:
-            i (int): 图片矩阵的行索引
-            pbar (tqdm()): tqdm的进度条实例
-        &quot;&quot;&quot;
-        for j in range(self.cols):
-            if (self.image_original[i][j] == np.zeros(4)).all():
-                self.image_original[i][j] = np.array([0, 0, 255, 255]) # 图片背景修改为红色 | 注意OPENCV的通道是BGR
-            else:
-                pass
-        pbar.update()
-
-    def parallel(self):
-        &quot;&quot;&quot;并行程序
-        &quot;&quot;&quot;
-        t1 = time.time()
-        with tqdm(total=self.rows, desc='Parallel-Time') as pbar:
-            with cf.ThreadPoolExecutor() as tp:
-                for i in range(self.rows):
-                    tp.submit(self.__temp__, i, pbar)
-        t2 = time.time()
-        cv2.imwrite('./red.png', self.image_original)
-
-
-if __name__ == '__main__':
-    ChangeBackgroundColor('./original.png')
-</code></pre>
-<h1 id="测试样例">测试样例</h1>
-<h2 id="样例输入">样例输入</h2>
-<figure data-type="image" tabindex="1"><img src="https://img-blog.csdnimg.cn/bdaf7a8578dd443b90e973dcd72a6573.png?x-oss-process=imag,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGF2aWVyIEppZXpvdQ==,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述" loading="lazy"></figure>
-<h2 id="样例输出">样例输出</h2>
-<figure data-type="image" tabindex="2"><img src="https://img-blog.csdnimg.cn/5f425e8e29444c5bbf9454dd49aa3807.png?x-oss-process=image,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGF2aWVyIEppZXpvdQ==,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述" loading="lazy"></figure>
-<h1 id="问题描述">问题描述</h1>
-<p>代码命名已经做了多线程并行优化，但速度不但没有提升，反而下降了？？</p>
-<p><mark>串行在我自己电脑上测试的是8s，并行测试的是23s。</mark></p>
-<h1 id="解决方案">解决方案</h1>
-<p>会不会是 Python 全局解释锁（GIL）的问题？</p>
-<p><mark>（待解决……）</mark></p>
-
-    </p>
-    <div class="row">
-      <a href="https://xavierjiezou.github.io/post/python-wei-shi-me-duo-xian-cheng-bing-xing-bu-kuai-fan-man/" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://xavierjiezou.github.io/post/hello-gridea/">Hello Gridea</a>
-    </h2>
-    <p class="article-meta">
-      2018-12-12
-      
-        <a href="https://xavierjiezou.github.io/tag/2QJsGIJaG/" class="badge secondary">
-          Gridea
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-
-    </p>
-    <div class="row">
-      <a href="https://xavierjiezou.github.io/post/hello-gridea/" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-
+            <!------- 背景图加载方式👆----- --> 
+        <div id="landlord">
+            <div class="message" style="opacity:0"></div>
+            <canvas id="live2d" width="240" height="250" class="live2d"></canvas>
         </div>
-        
-        <div class="row flex-edges">
-  
-  
-</div>
-
-      </div>
-      
-      <div class="sm-12 md-4 col sidebar">
-  <div class="paper info-container">
-    <img src="https://xavierjiezou.github.io/images/avatar.png?v=1641320726243" class="no-responsive avatar">
-    <div class="text-muted">温故而知新</div>
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
     </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      最新文章
-    </div>
-    <div class="row">
-      <ul>
         
-          
-            <li>
-              <a href="https://xavierjiezou.github.io/post/python-wei-shi-me-duo-xian-cheng-bing-xing-bu-kuai-fan-man/">【Python】为什么多线程并行不快反慢？</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://xavierjiezou.github.io/post/about/">关于</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://xavierjiezou.github.io/post/hello-gridea/">Hello Gridea</a>
-            </li>
-          
-        
-      </ul>
-    </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      标签列表
-    </div>
-    <div class="row">
-      
-        <a href="https://xavierjiezou.github.io/tag/2u-SDzgjO/" class="badge ">
-          python
-        </a>
-      
-        <a href="https://xavierjiezou.github.io/tag/6BJ_senDvh/" class="badge warning">
-          多线程
-        </a>
-      
-        <a href="https://xavierjiezou.github.io/tag/2QJsGIJaG/" class="badge ">
-          Gridea
-        </a>
-      
-    </div>
-  </div>
-  <div class="paper">
-    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://xavierjiezou.github.io/atom.xml" target="_blank">RSS</a>
-  </div>
-</div>
+    <div id="domainname" style="display:none">https://xavierjiezou.github.io
+        </div>
 
-    </div>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<!-------------------- live2d功能👇 --------------------------->
+    
+<!-------------------- live2d功能👆 --------------------------->
 
-<script type="application/javascript">
+<!------------ 加载全局背景图功能👇（开始时没有写好，这功能有点鸡肋/(ㄒoㄒ)/~~） -->
+<script>
+    var bgchoice = $('#bgchoice').html();
+    var bg = $('#bg');
+    var bgurl = document.getElementById("bgurl").innerHTML;
+    if (bgchoice == 'default')
+        for (var i = 0; i < 3; i++)
+            bgurl = bgurl.replace("\\", "/");
+    bg.css("background", "url('" + bgurl + "')");
 
-AOS.init();
-
-hljs.initHighlightingOnLoad()
-
+    window.onload = function () {
+        aplayerbtnInit();
+    }
 </script>
+<!------------ 加载全局背景图功能👆（开始时没有写好，这功能有点鸡肋/(ㄒoㄒ)/~~） -->
 
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
 
-
-
-  </body>
+        
+</body>
 </html>
