@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xavierjiezou.github.io</id>
     <title>XavierJiezou</title>
-    <updated>2022-01-05T12:53:07.654Z</updated>
+    <updated>2022-01-05T13:06:46.521Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xavierjiezou.github.io"/>
     <link rel="self" href="https://xavierjiezou.github.io/atom.xml"/>
@@ -10,6 +10,59 @@
     <logo>https://xavierjiezou.github.io/images/avatar.png</logo>
     <icon>https://xavierjiezou.github.io/favicon.ico</icon>
     <rights>All rights reserved 2022, XavierJiezou</rights>
+    <entry>
+        <title type="html"><![CDATA[推荐两款好用的视频压缩工具（在保证画质的情况下最大限度地压制）]]></title>
+        <id>https://xavierjiezou.github.io/post/tui-jian-liang-kuan-hao-yong-de-shi-pin-ya-suo-gong-ju-zai-bao-zheng-hua-zhi-de-qing-kuang-xia-zui-da-xian-du-di-ya-zhi/</id>
+        <link href="https://xavierjiezou.github.io/post/tui-jian-liang-kuan-hao-yong-de-shi-pin-ya-suo-gong-ju-zai-bao-zheng-hua-zhi-de-qing-kuang-xia-zui-da-xian-du-di-ya-zhi/">
+        </link>
+        <updated>2022-01-05T13:06:14.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="引言">引言</h1>
+<p>最近一直在使用 PR (Adobe Premiere Pro) 剪辑视频，但发现导出的视频非常大。动辄 200-300 MB，更大的可能 1-2 GB。今天博主给大家推荐两款好用的视频压缩工具，在尽量保证画质的情况下实现最大限度的压缩视频。</p>
+<h1 id="工具">工具</h1>
+<h2 id="youcompress">YouCompress</h2>
+<blockquote>
+<p>官网地址：<a href="https://www.youcompress.com/">https://www.youcompress.com/</a></p>
+</blockquote>
+<p>这个是一个在线的文件压缩网站，支持各种格式的文件的压缩。你只需要把视频文件上传上去就行。<br>
+<img src="https://img-blog.csdnimg.cn/57ea86a8cb1e4e2ca4f02300085ef8a6.png?x-oss-process=image,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGF2aWVyIEppZXpvdQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述" loading="lazy"></p>
+<blockquote>
+<p><strong>注意</strong>：您的视频会被上传到远程服务器进行压缩，然后将压缩后的文件返回，供你下载。虽然网站保证说会在几个小时内自动删除你上传的数据，但如果是私密视频数据的话，建议还是不要用这种线上的工具。</p>
+</blockquote>
+<h2 id="小丸工具箱">小丸工具箱</h2>
+<blockquote>
+<p>下载地址：<a href="https://download.csdn.net/download/qq_42951560/69480282">CSDN</a> | <a href="https://j8rd-my.sharepoint.com/:u:/g/personal/25_t_skings_club/EcOXmYEqcT9BmLKrkZLJpIsBGyg219dLMOZ2GDS2UuqNcA?e=mDF3db">微软云盘</a> | <a href="https://maruko.appinn.me/">官网下载</a> | <a href="https://weibo.com/57655408">作者微博</a> |</p>
+</blockquote>
+<p>小丸工具箱是一款用于处理音视频等多媒体文件的软件。是一款x264、ffmpeg等命令行程序的图形界面。它的目标是让视频压制变得简单、轻松。</p>
+<h3 id="主要功能">主要功能</h3>
+<ul>
+<li>高质量的H264+AAC视频压制</li>
+<li>ASS/SRT字幕内嵌到视频</li>
+<li>AAC/WAV/FLAC/ALAC音频转换</li>
+<li>MP4/MKV/FLV的无损抽取和封装</li>
+</ul>
+<h3 id="软件截图">软件截图</h3>
+<ol>
+<li>
+<p>首页打开界面<br>
+<img src="https://img-blog.csdnimg.cn/ff2d219f09c04be9991ac4ec2e59c2bf.png?x-oss-process=image,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGF2aWVyIEppZXpvdQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述" loading="lazy"></p>
+</li>
+<li>
+<p>视频选择界面<br>
+<img src="https://img-blog.csdnimg.cn/b20d990fa0f84252bdb2c57973d99325.png?x-oss-process=image,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGF2aWVyIEppZXpvdQ==,size_18,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述" loading="lazy"></p>
+</li>
+<li>
+<p>压缩进度界面<br>
+<img src="https://img-blog.csdnimg.cn/24d8132a8e744050870bcb60bbf80777.png?x-oss-process=image,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGF2aWVyIEppZXpvdQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述" loading="lazy"></p>
+</li>
+</ol>
+<h1 id="总结">总结</h1>
+<p>对于不太重要的视频文件或图方便的话，直接使用推荐的第一个在线网站就行了。更安全的方案是下载小丸工具箱，在本地对视频进行压缩。这里我也测试了一下，PR 导出的视频是371MB，用小丸工具箱压缩后只有66MB，而且画质也还可以，基本没怎么受损，在可接受的范围内。</p>
+<h1 id="参考">参考</h1>
+<blockquote>
+<p><a href="https://maruko.appinn.me/">https://maruko.appinn.me/</a></p>
+</blockquote>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[【Python】为什么多线程并行不快反慢？]]></title>
         <id>https://xavierjiezou.github.io/post/python-wei-shi-me-duo-xian-cheng-bing-xing-bu-kuai-fan-man/</id>
